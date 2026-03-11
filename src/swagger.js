@@ -1,6 +1,8 @@
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import dotenv from "dotenv";
+// Load biến môi trường
+dotenv.config();
 const options = {
   definition: {
     openapi: "3.0.0",
@@ -15,7 +17,7 @@ const options = {
     },
     servers: [
       {
-        url: dotenv.config().parsed.URL_API,
+        url: process.env.URL_API || "http://localhost:3001",
         description: "Development Server",
       },
     ],
