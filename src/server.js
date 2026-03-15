@@ -23,9 +23,11 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 // Mọi request bắt đầu bằng /api/users sẽ đi vào userRoutes
 app.use("/api/users", userRoutes);
 
+const allowedOrigins = ["https://admin.app.com", "http://localhost:3000"];
+
 app.use(
   cors({
-    origin: ["https://admin.app.com", "http://localhost:3000"],
+    origin: allowedOrigins,
     credentials: true,
   }),
 );
