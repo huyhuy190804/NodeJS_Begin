@@ -23,6 +23,12 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 // Mọi request bắt đầu bằng /api/users sẽ đi vào userRoutes
 app.use("/api/users", userRoutes);
 
+app.use(
+  cors({
+    origin: ["https://admin.app.com", "http://localhost:3000"],
+    credentials: true,
+  }),
+);
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`🚀 Server đang chạy tại http://localhost:${PORT}`);
