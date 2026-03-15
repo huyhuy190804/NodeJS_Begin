@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js"; // Nhớ đuôi .js
 import userRoutes from "./routes/userRoutes.js"; // Nhớ đuôi .js
 import { swaggerSpec, swaggerUi } from "./swagger.js"; // Import Swagger
-
+import cors from "cors";
 // Load biến môi trường
 dotenv.config();
 
