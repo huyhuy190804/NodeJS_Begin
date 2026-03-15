@@ -9,6 +9,15 @@ dotenv.config();
 
 const app = express();
 
+const allowedOrigins = ["https://admin.app.com", "http://localhost:3000"];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  }),
+);
+
 // Middleware quan trọng: Giúp Express hiểu được dữ liệu JSON
 // Nếu thiếu dòng này, req.body sẽ bị undefined
 app.use(express.json());
@@ -23,14 +32,6 @@ app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 // Mọi request bắt đầu bằng /api/users sẽ đi vào userRoutes
 app.use("/api/users", userRoutes);
 
-const allowedOrigins = ["https://admin.app.com", "http://localhost:3000"];
-
-app.use(
-  cors({
-    origin: allowedOrigins,
-    credentials: true,
-  }),
-);
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`🚀 Server đang chạy tại http://localhost:${PORT}`);
