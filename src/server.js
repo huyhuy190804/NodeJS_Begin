@@ -9,7 +9,7 @@ dotenv.config();
 
 const app = express();
 
-const allowedOrigins = ["https://admin.app.com", "http://localhost:3000"];
+const allowedOrigins = ["https://admin.app.com", "http://localhost:3000","https://react-js-crud-user.vercel.app"];
 
 app.use(
   cors({
